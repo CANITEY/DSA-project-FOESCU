@@ -5,6 +5,7 @@ we are appling our knowledge making queue and doubly linked list datastructure
 - Mohammed Ahmed AbdEl-nabi
 - Magdy Mohamed Magdy
 - Mohamed Zayed Gaber
+- Yousef Mohamed Makram
 - Omar Mohamed Ahmed
 - Zyad Elsayed Ebrahim
 - Taha Adel Mnofi

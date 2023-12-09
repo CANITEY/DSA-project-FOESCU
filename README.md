@@ -4,7 +4,6 @@ we are appling our knowledge making queue and doubly linked list datastructure
 ## People contributing are
 - Mohammed Ahmed AbdEl-nabi
 - Magdy Mohamed Magdy
-- Youssef Mohamed Makram
 - Mohamed Zayed Gaber
 - Omar Mohamed Ahmed
 - Zyad Elsayed Ebrahim

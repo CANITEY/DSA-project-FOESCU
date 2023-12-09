@@ -53,6 +53,7 @@ class Doctors {
         // display list
         void display();
         
+        void displayRev();
         // print list in linked shape
         void visualize();
 

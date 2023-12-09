@@ -1,24 +1,18 @@
-#include <exception>
 #include <iostream>
-#include "doctors.h"
+#include "patients.h"
 
-using namespace std;
-
+using namespace std ;
 
 
 int main() {
-    Doctors doc;
-    doc.insertFirst("Abd elnabi");
-    doc.insertFirst("Ahmed");
-    doc.insertFirst("Mohammed");
-    doc.insertLast("Ahmed");
-    doc.insertLast("Mousa");
-    doc.insertAt(4, "Imposter");
-    doc.display();
-    cout << "===========" << endl;
-    doc.deleteAt(0);
-    doc.display();
+    PatientQueue q(4);
+    q.enqueue("Mohammed");
+    q.enqueue("Zyad");
+    q.enqueue("Omar");
+    q.enqueue("Steven");
+    q.enqueue("ss");
+
+    q.getFront();
+    q.getRear();
     return 0;
-
 }
-

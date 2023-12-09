@@ -173,6 +173,14 @@ void Doctors::display() {
     }
 }
 
+void Doctors::displayRev() {
+    Node *current = tail;
+    while (current != NULL) {
+        cout << current->name << endl;
+        current = current->prev;
+    }
+}
+
 void Doctors::visualize() {
     cout << "**List length is: " << this->length() << "**" << endl;
     Node *current = head;

@@ -1,18 +1,18 @@
 #include <iostream>
-#include "patients.h"
+#include "doctors.h"
 
 using namespace std ;
 
 
 int main() {
-    PatientQueue q(4);
-    q.enqueue("Mohammed");
-    q.enqueue("Zyad");
-    q.enqueue("Omar");
-    q.enqueue("Steven");
-    q.enqueue("ss");
+    Doctors doc;
+    doc.insertOrdered("mohammed");
+    doc.insertOrdered("ahmed");
+    doc.insertOrdered("abmed");
+    doc.insertOrdered("saeed");
+    doc.insertOrdered("sad");
 
-    q.getFront();
-    q.getRear();
+    doc.display();
+    cout << doc.length() << endl;
     return 0;
 }

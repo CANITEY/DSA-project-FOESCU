@@ -1,4 +1,5 @@
 #include "doctors.h"
+#include <iterator>
 
 
 
@@ -13,6 +14,7 @@ void Doctors::insertEmpty(string name) {
     newDoctor->name = name;
     head = newDoctor;
     tail = newDoctor;
+    newDoctor->next = newDoctor->prev = NULL;
     count++;
 }
 
@@ -27,7 +29,7 @@ void Doctors::insertFirst(string name) {
 
     } // else { ...content 
 
-    // here we initialized newDoctor of the Node type then we altered its value and linked it with the head
+    // here we initialized newDoctor of the Node type then we altered its value and link it with the head
     Node *newDoctor = new Node;
 
     newDoctor->name = name;
@@ -96,6 +98,28 @@ void Doctors::insertAt(int index, string name) {
         return;
     }
 }
+
+void Doctors::insertOrdered(string name) {
+    if (empty()) {
+        insertEmpty(name);
+    } else if (name < head->name) {
+        insertFirst(name);
+    } else if (name > tail->name) {
+        insertLast(name);
+    } else {
+        Node *current = head;
+        int index = 0;
+        while (current != NULL && current->name < name) {
+            index++;
+            current = current->next;
+        }
+        insertAt(index, name);
+    }
+    return;
+}
+
+
+
 void Doctors::deleteFirst() {
     if (empty()) {
         cout << "list is empty";
@@ -207,7 +231,7 @@ string Doctors::at(int index) {
 int Doctors::search(string name) {
     Node *current = head;
     bool found = false;
-    int index;
+    int index = 0;
 
     while (!found && current != NULL) {
         if (current->name == name) {
@@ -223,6 +247,7 @@ int Doctors::search(string name) {
 
     return -1;
 }
+
 
 bool Doctors::empty() {
     if (head == NULL && tail == NULL) {

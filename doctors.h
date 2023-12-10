@@ -35,6 +35,8 @@ class Doctors {
         // this function inserts after the specified index
         void insertAt(int index, string name);
         // end of insertion
+        
+        void insertOrdered(string name);
 
         // delete functions implementations
         void deleteFirst();

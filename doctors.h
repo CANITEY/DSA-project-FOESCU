@@ -56,8 +56,6 @@ class Doctors {
         void display();
         
         void displayRev();
-        // print list in linked shape
-        void visualize();
 
         // get the doctors name at some index;
         string at(int index);

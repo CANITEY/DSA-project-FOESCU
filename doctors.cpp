@@ -205,16 +205,6 @@ void Doctors::displayRev() {
     }
 }
 
-void Doctors::visualize() {
-    cout << "**List length is: " << this->length() << "**" << endl;
-    Node *current = head;
-    cout << "|NULL|<-->";
-    while (current != NULL) {
-        cout << "|" << current->name << "|<-->";
-        current = current->next;
-    }
-    cout << "|NULL|" << endl;
-}
 
 string Doctors::at(int index) {
     if (index >= count) {

@@ -1,5 +1,4 @@
 #include "doctors.h"
-#include <iterator>
 
 
 
@@ -9,21 +8,22 @@ Doctors::Doctors() {
     count = 0;
 }
 
-void Doctors::insertEmpty(string name) {
+void Doctors::insertEmpty(int id, string name) {
     Node *newDoctor = new Node;
     newDoctor->name = name;
+    newDoctor->id   = id;
     head = newDoctor;
     tail = newDoctor;
     newDoctor->next = newDoctor->prev = NULL;
     count++;
 }
 
-void Doctors::insertFirst(string name) {
+void Doctors::insertFirst(int id, string name) {
 
     // checking if the list is empty so we call the insert empty function
     if (empty()) {
 
-        insertEmpty(name);
+        insertEmpty(id, name);
         // we use return so we don't need to use the else keyword in the statement we can remove it and use the else statement
         return; // it returns no value because the function has the return type of void
 
@@ -33,6 +33,7 @@ void Doctors::insertFirst(string name) {
     Node *newDoctor = new Node;
 
     newDoctor->name = name;
+    newDoctor->id   = id;
     newDoctor->next = head;
     head->prev = newDoctor;
     newDoctor->prev = NULL;
@@ -42,16 +43,17 @@ void Doctors::insertFirst(string name) {
 }
 
 
-void Doctors::insertLast(string name) {
+void Doctors::insertLast(int id, string name) {
     // checking if it is empty so we call the insert empty function
     if (empty()) {
         // same as insertFirst
-        insertEmpty(name);
+        insertEmpty(id, name);
         return;
     }
 
     Node *newDoctor = new Node;
     newDoctor->name = name;
+    newDoctor->id   = id;
     newDoctor->next = NULL;
     newDoctor->prev = tail;
     tail->next = newDoctor;
@@ -61,26 +63,27 @@ void Doctors::insertLast(string name) {
 }
 
 
-void Doctors::insertAt(int index, string name) {
+void Doctors::insertAt(int index, int id, string name) {
     // same as the two above
     if (empty()) {
-        insertEmpty(name);
+        insertEmpty(id, name);
         return;
     }
 
     if (index >= count) {
         cout << "index is >= the list length\ninserting new doctor at the end of the list\n";
-        insertLast(name);
+        insertLast(id, name);
         return;
     }
 
     if (index == 0) {
-        insertFirst(name);
+        insertFirst(id, name);
         return;
     }
 
     Node *newDoctor = new Node;
     newDoctor->name = name;
+    newDoctor->id   = id;
 
     Node *current = head;
 
@@ -172,7 +175,7 @@ int Doctors::length() {
 void Doctors::display() {
     Node *current = head;
     while (current != NULL) {
-        cout << current->name << endl;
+        cout << current->id << " | " << current->name << endl;
         current = current->next;
     }
 }
@@ -180,7 +183,7 @@ void Doctors::display() {
 void Doctors::displayRev() {
     Node *current = tail;
     while (current != NULL) {
-        cout << current->name << endl;
+        cout << current->id << " | " << current->name << endl;
         current = current->prev;
     }
 }
@@ -205,6 +208,27 @@ int Doctors::search(string name) {
 
     return -1;
 }
+
+string Doctors::searchName(int id) {
+    Node *current = head;
+    bool found = false;
+    int index = 0;
+
+    while (!found && current != NULL) {
+        if (current->id == id) {
+            found = true;
+            break;
+        }
+        current = current->next;
+        index++;
+    }
+    if (found) {
+        return current->name;
+    }
+
+    return "";
+}
+
 
 
 bool Doctors::empty() {

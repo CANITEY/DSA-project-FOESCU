@@ -7,6 +7,7 @@ using namespace std;
 
 struct Node {
     string name;
+    int id;
     Node *next;
     Node *prev;
 };
@@ -18,7 +19,7 @@ class Doctors {
         int count;
 
         // creating a function to insert if the list is empty so we don't need to call the function body every time in the 3 insert function below
-        void insertEmpty(string name);
+        void insertEmpty(int id, string name);
 
     public:
         // initializing the head and tail pointers so they point at NULL, and count so it equals zero
@@ -27,13 +28,13 @@ class Doctors {
 
         // insertion implementations
         // insert at first function that inserts before the head so the next pointer "points" to the head and prev pointer "points" to NULL
-        void insertFirst(string name);
+        void insertFirst(int id, string name);
 
         // this is a function that will insert a node at the tail pointer, and the result node will point at the tail using the prev "pointer" and point at NULL using the next pointer
-        void insertLast(string name);
+        void insertLast(int id, string name);
 
         // this function inserts after the specified index
-        void insertAt(int index, string name);
+        void insertAt(int index, int id, string name);
         // end of insertion
         
         // delete functions implementations
@@ -57,6 +58,8 @@ class Doctors {
 
         // check if a doctor is in list
         int search(string name);
+
+        string searchName(int id);
 
         // check if the list is empty
         bool empty();

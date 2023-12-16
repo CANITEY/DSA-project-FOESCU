@@ -36,8 +36,6 @@ class Doctors {
         void insertAt(int index, string name);
         // end of insertion
         
-        void insertOrdered(string name);
-
         // delete functions implementations
         void deleteFirst();
 
@@ -56,9 +54,6 @@ class Doctors {
         void display();
         
         void displayRev();
-
-        // get the doctors name at some index;
-        string at(int index);
 
         // check if a doctor is in list
         int search(string name);

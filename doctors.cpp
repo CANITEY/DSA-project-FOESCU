@@ -99,26 +99,6 @@ void Doctors::insertAt(int index, string name) {
     }
 }
 
-void Doctors::insertOrdered(string name) {
-    if (empty()) {
-        insertEmpty(name);
-    } else if (name < head->name) {
-        insertFirst(name);
-    } else if (name > tail->name) {
-        insertLast(name);
-    } else {
-        Node *current = head;
-        int index = 0;
-        while (current != NULL && current->name < name) {
-            index++;
-            current = current->next;
-        }
-        insertAt(index, name);
-    }
-    return;
-}
-
-
 
 void Doctors::deleteFirst() {
     if (empty()) {
@@ -205,18 +185,6 @@ void Doctors::displayRev() {
     }
 }
 
-
-string Doctors::at(int index) {
-    if (index >= count) {
-        return "index is above the list length";
-    }
-    Node *current = head;
-    while (current != NULL && index != 0) {
-        index--;
-        current = current->next;
-    }
-    return current->name;
-}
 
 int Doctors::search(string name) {
     Node *current = head;

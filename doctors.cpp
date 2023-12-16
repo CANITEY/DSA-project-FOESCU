@@ -1,7 +1,5 @@
 #include "doctors.h"
 
-
-
 Doctors::Doctors() {
     head = NULL;
     tail = NULL;
@@ -9,6 +7,10 @@ Doctors::Doctors() {
 }
 
 void Doctors::insertEmpty(int id, string name) {
+    if (idReused(id)) {
+        cerr << "Already added ID" << endl;
+        return;
+    }
     Node *newDoctor = new Node;
     newDoctor->name = name;
     newDoctor->id   = id;
@@ -18,8 +20,28 @@ void Doctors::insertEmpty(int id, string name) {
     count++;
 }
 
+
+bool Doctors::idReused(int id) {
+    Node *current = head;
+    bool found = false;
+    while (!found && current != NULL) {
+        if (current->id == id) {
+            found = true;
+            break;
+        }
+        current = current->next;
+    }
+
+    return found;
+}
+
+
 void Doctors::insertFirst(int id, string name) {
 
+    if (idReused(id)) {
+        cerr << "Already added ID" << endl;
+        return;
+    }
     // checking if the list is empty so we call the insert empty function
     if (empty()) {
 
@@ -44,6 +66,11 @@ void Doctors::insertFirst(int id, string name) {
 
 
 void Doctors::insertLast(int id, string name) {
+    if (idReused(id)) {
+        cerr << "Already added ID" << endl;
+        return;
+    }
+
     // checking if it is empty so we call the insert empty function
     if (empty()) {
         // same as insertFirst
@@ -64,6 +91,11 @@ void Doctors::insertLast(int id, string name) {
 
 
 void Doctors::insertAt(int index, int id, string name) {
+    if (idReused(id)) {
+        cerr << "Already added ID" << endl;
+        return;
+    }
+
     // same as the two above
     if (empty()) {
         insertEmpty(id, name);

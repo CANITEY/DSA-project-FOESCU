@@ -20,6 +20,8 @@ class Doctors {
 
         // creating a function to insert if the list is empty so we don't need to call the function body every time in the 3 insert function below
         void insertEmpty(int id, string name);
+        
+        bool idReused(int id);
 
     public:
         // initializing the head and tail pointers so they point at NULL, and count so it equals zero

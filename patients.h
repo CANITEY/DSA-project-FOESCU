@@ -19,10 +19,10 @@ class PatientQueue {
         // initialize a queue with max size of 10
         PatientQueue();
 
-        // initialize a queue with dynamic max size
+        // initialize a queue with dynamic max size that is specified at run time
         PatientQueue(int size);
 
-        // checks if the queue is empty of full
+        // checks if the queue is empty or full
         bool isEmpty();
         bool isFull();
 

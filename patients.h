@@ -12,6 +12,7 @@ class PatientQueue {
         int rear;
         int count;
         string *patientNames;
+        int *patientIds;
         int maxSize;
 
         void initializeQueue();
@@ -27,7 +28,7 @@ class PatientQueue {
         bool isFull();
 
         // adds a patient to queue
-        void enqueue(string name);
+        void enqueue(int id, string name);
 
         // remove a patient from queue
         void dequeue();

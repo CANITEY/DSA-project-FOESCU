@@ -9,12 +9,14 @@ void PatientQueue::initializeQueue() {
 PatientQueue::PatientQueue() {
     initializeQueue();
     patientNames = new string[10];
+    patientIds = new int[10];
 }
 
 PatientQueue::PatientQueue(int size) {
     initializeQueue();
     maxSize = size;
     patientNames = new string[size];
+    patientIds = new int[size];
 }
 
 bool PatientQueue::isEmpty() {
@@ -25,7 +27,7 @@ bool PatientQueue::isFull() {
     return count == maxSize;
 }
 
-void PatientQueue::enqueue(string name) {
+void PatientQueue::enqueue(int id, string name) {
     if (isFull()) {
         cout << "Queue is full. Cannot enqueue.\n";
         return;
@@ -37,6 +39,7 @@ void PatientQueue::enqueue(string name) {
 
     rear = (rear + 1) % maxSize;
     patientNames[rear] = name;
+    patientIds[rear] = id;
     count++;
     cout << "Added patient " << name << " to the queue.\n";
 }
@@ -67,6 +70,7 @@ void PatientQueue::getFront() {
     }
 
     cout << "Front Patient Name: " << patientNames[front] << "\n";
+    cout << "Front Patient Id: " << patientIds[front] << "\n";
 }
 
 void PatientQueue::getRear() {
@@ -76,11 +80,13 @@ void PatientQueue::getRear() {
     }
 
     cout << "Rear patient's name : " << patientNames[rear] << endl;
+    cout << "Front Patient Id: " << patientIds[rear] << "\n";
 }
 
 void PatientQueue::destroyQueue() {
     initializeQueue(); // Reset front and rear to -1
     delete [] patientNames;
+    delete [] patientIds;
     cout << "Queue destroyed.\n";
 }
 

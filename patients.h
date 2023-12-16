@@ -16,6 +16,7 @@ class PatientQueue {
         int maxSize;
 
         void initializeQueue();
+        bool idReused(int id);
     public:
         // initialize a queue with max size of 10
         PatientQueue();

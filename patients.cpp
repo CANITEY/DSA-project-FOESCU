@@ -6,10 +6,21 @@ void PatientQueue::initializeQueue() {
     cout << "Patient queue initialized.\n";
 }
 
+bool PatientQueue::idReused(int id) {
+    for (int i = 0; i < count; i++) {
+        if (patientIds[i] == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 PatientQueue::PatientQueue() {
     initializeQueue();
-    patientNames = new string[10];
-    patientIds = new int[10];
+    maxSize = 10;
+    patientNames = new string[maxSize];
+    patientIds = new int[maxSize];
 }
 
 PatientQueue::PatientQueue(int size) {
@@ -30,6 +41,11 @@ bool PatientQueue::isFull() {
 void PatientQueue::enqueue(int id, string name) {
     if (isFull()) {
         cout << "Queue is full. Cannot enqueue.\n";
+        return;
+    }
+
+    if (idReused(id)) {
+        cerr << "Already added ID" << endl;
         return;
     }
 
@@ -80,7 +96,7 @@ void PatientQueue::getRear() {
     }
 
     cout << "Rear patient's name : " << patientNames[rear] << endl;
-    cout << "Front Patient Id: " << patientIds[rear] << "\n";
+    cout << "Rear Patient Id: " << patientIds[rear] << "\n";
 }
 
 void PatientQueue::destroyQueue() {

@@ -196,6 +196,7 @@ void Doctors::deleteAt(int index) {
     current->next->prev = current->prev;
     delete temp;
     temp = NULL;
+    count--;
 }
 
 
